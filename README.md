@@ -1,4 +1,4 @@
-# 🏦 FinGrievance Intelligence
+# 🏦Consumer-Financial-Complaints
 
 ### Root-Cause Mining and Resolution Outcome Prediction from Consumer Complaint Narratives
 
