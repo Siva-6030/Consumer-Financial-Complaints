@@ -101,27 +101,55 @@ An end-to-end NLP system on the credit card complaints in the CFPB database that
 
 The following analysis and visualizations were performed in the notebook:
 
-![Missing Value Analysis](Visualizations/Missing%20Value%20Analysis.png)
+> Click a visualization name to view the image.
 
-### Top Companies by Complaint Volume
+<details>
+<summary><b>📉 Missing Value Analysis</b></summary>
+<br>
 
-![Top Companies by Complaint Volume](Visualizations/Top%20Companies%20by%20Complaint%20Volume.png)
+<img src="Visualizations/Missing%20Value%20Analysis.png" alt="Missing Value Analysis" width="800">
 
-### Top Complaint Issues
+</details>
 
-![Top Complaint Issues](Visualizations/Top%20Complaint%20Issues.png)
+<details>
+<summary><b>🏢 Top Companies by Complaint Volume</b></summary>
+<br>
 
-### Top Complaint Sub-Issues
+<img src="Visualizations/Top%20Companies%20by%20Complaint%20Volume.png" alt="Top Companies by Complaint Volume" width="800">
 
-![Top Complaint Sub-Issues](Visualizations/Top%20Complaint%20Sub-Issues.png)
+</details>
 
-### Top Financial Products by Complaint Volume
+<details>
+<summary><b>⚠️ Top Complaint Issues</b></summary>
+<br>
 
-![Top Financial Products by Complaint Volume](Visualizations/Top%20Financial%20Products%20by%20Complaint%20Volume.png)
+<img src="Visualizations/Top%20Complaint%20Issues.png" alt="Top Complaint Issues" width="800">
 
-### Top States by Complaint Volume
+</details>
 
-![Top States by Complaint Volume](Visualizations/Top%20States%20by%20Complaint%20Volume.png)
+<details>
+<summary><b>🔎 Top Complaint Sub-Issues</b></summary>
+<br>
+
+<img src="Visualizations/Top%20Complaint%20Sub-Issues.png" alt="Top Complaint Sub-Issues" width="800">
+
+</details>
+
+<details>
+<summary><b>💳 Top Financial Products by Complaint Volume</b></summary>
+<br>
+
+<img src="Visualizations/Top%20Financial%20Products%20by%20Complaint%20Volume.png" alt="Top Financial Products by Complaint Volume" width="800">
+
+</details>
+
+<details>
+<summary><b>🗺️ Top States by Complaint Volume</b></summary>
+<br>
+
+<img src="Visualizations/Top%20States%20by%20Complaint%20Volume.png" alt="Top States by Complaint Volume" width="800">
+
+</details>
 
 ---
 
