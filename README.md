@@ -1,207 +1,218 @@
-# 🏦Consumer-Financial-Complaints
+# 🏦 FinGrievance Intelligence
 
 ### Root-Cause Mining and Resolution Outcome Prediction from Consumer Complaint Narratives
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)
-![Data](https://img.shields.io/badge/Data-CFPB%20CCDB-0A66C2)
 ![Status](https://img.shields.io/badge/Status-EDA%20Phase-yellow)
-
-> 🚧 **Current stage: Exploratory Data Analysis (EDA) and data cleaning.** NLP modeling, outcome prediction and the dashboard are planned for later phases.
 
 ---
 
 ## 📑 Table of Contents
 
-1. [Overview](#-overview)
+1. [Industry](#-industry)
 2. [Problem Statement](#-problem-statement)
-3. [Project Objectives](#-project-objectives)
+3. [Proposed Solution](#-proposed-solution)
 4. [Dataset](#-dataset)
-5. [EDA Work Completed](#-eda-work-completed)
-6. [Tech Stack](#-tech-stack)
-7. [Project Structure](#-project-structure)
-8. [Installation & Usage](#-installation--usage)
-9. [Roadmap](#-roadmap)
-10. [Key Findings](#-key-findings)
-
+5. [Tools & Technologies](#-tools--technologies)
+6. [Project Workflow](#-project-workflow)
+7. [Data Analysis & Visualization](#-data-analysis--visualization)
+8. [Key Insights](#-key-insights)
+9. [Recommendations](#-recommendations)
+10. [Visualization Screenshots](#visualization-screenshots)
+11. [Project Folder Structure](#-project-folder-structure)
+12. [Author](#-author)
 
 ---
 
-## 🔎 Overview
+## 🏭 Industry
 
-| Item | Detail |
-|---|---|
-| **Industry** | US consumer credit cards (retail banking and consumer lending) |
-| **Product in scope** | Credit card (complaints with a narrative) |
-| **Data source** | CFPB Consumer Complaint Database (updated daily) |
-| **Companies in focus** | Capital One, JPMorgan Chase, Bank of America, Wells Fargo, Citi, Synchrony, Discover *(to be confirmed from the data)* |
-| **Current phase** | Data cleaning and exploratory analysis |
+**US consumer credit cards (retail banking and consumer lending).**
+Product in scope: Credit card (CFPB Consumer Complaint Database, complaints with a narrative).
+Companies in focus: Capital One, JPMorgan Chase, Bank of America, Wells Fargo, Citi, Synchrony and Discover *(to be confirmed from the data)*.
 
 ---
 
 ## ❗ Problem Statement
 
-Credit card issuers receive thousands of consumer complaints every month, mostly as free-text narratives filed under broad **Issue** labels such as *"Problem with a purchase shown on your statement"* or *"Fees or interest"*. These labels show **where** a complaint belongs, not **why** it happened. A single label can cover unauthorized charges, a merchant dispute, a rewards error, an unexpected interest charge or a closed account.
+Credit card issuers receive thousands of consumer complaints every month, mostly as free-text narratives filed under broad Issue labels such as *"Problem with a purchase shown on your statement"* or *"Fees or interest"*. These labels show **where** a complaint belongs, not **why** it happened. A single label can cover unauthorized charges, a merchant dispute, a rewards error, an unexpected interest charge or a closed account.
 
-Issuers handle similar problems, yet the same root cause can end in monetary relief, non-monetary relief or only an explanation. There is no evidence-based way to check how consistent those outcomes are, and new problems appear in narratives before they appear in category counts.
+Issuers such as Capital One, JPMorgan Chase, Bank of America and Synchrony handle similar problems, yet the same root cause can end in monetary relief, non-monetary relief or only an explanation. There is no evidence-based way to check how consistent those outcomes are, and new problems such as a fraud pattern or an app change appear in narratives before they appear in category counts.
 
 ---
 
-## 🎯 Project Objectives
+## 💡 Proposed Solution
 
-The full project will:
+An end-to-end NLP system on the credit card complaints in the CFPB database that:
 
-1. Clean and structure complaint narratives *(in progress, EDA phase)*
-2. Discover root-cause themes with embedding-based topic modeling and track them over time
-3. Predict expected relief probability from each narrative using a time-based split
-4. Compute a company-level **Relief Gap Score** (observed minus expected relief per company and root cause)
-5. Explain predictions with SHAP and present results in a dashboard
+1. Cleans and structures the narratives
+2. Discovers root-cause themes with embedding-based topic modeling and tracks them over time
+3. Predicts the expected relief probability of each complaint from its narrative using a time-based split
+4. Computes a company-level **Relief Gap Score** (observed minus expected relief per company and root cause)
+5. Explains predictions with SHAP and presents results in a dashboard
+
+> 📌 **Current stage:** Steps 1 (data cleaning) and exploratory data analysis are completed in this repository. Steps 2–5 are planned future work.
 
 ---
 
 ## 📦 Dataset
 
-- **Source:** [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/)
-- **Download:** <https://files.consumerfinance.gov/ccdb/complaints.csv.zip>
-
-**Key columns explored**
-
-| Column | Description |
+| Item | Detail |
 |---|---|
-| `complaint_id` | Unique complaint identifier |
-| `date_received` / `date_sent_to_company` | Complaint timeline dates |
-| `product`, `sub_product` | Financial product category |
-| `issue`, `sub_issue` | Broad complaint labels |
-| `company` | Company the complaint was filed against |
-| `company_response_to_consumer` | How the company closed the complaint (future relief target) |
-| `company_public_response` | Optional public response |
-| `state`, `zip_code` | Consumer location |
-| `submitted_via` | Submission channel |
-| `timely_response` | Whether the company responded on time |
-| `tags` | Consumer tags (e.g., older American, servicemember) |
-
-> The raw CSV is not committed to this repository because of its size. Download it from the link above and update the path in the notebook.
+| **Dataset Name** | CFPB Consumer Complaint Database (Consumer Financial Complaints) |
+| **Source** | [Consumer Financial Protection Bureau](https://www.consumerfinance.gov/data-research/consumer-complaints/) |
+| **Download Link** | <https://files.consumerfinance.gov/ccdb/complaints.csv.zip> |
+| **Update Frequency** | Daily |
+| **Files** | Raw dataset and cleaned dataset (see folder structure) |
 
 ---
 
-## 🧹 EDA Work Completed
+## 🛠 Tools & Technologies
 
-Notebook: [`Consumer_Financial_Complaints.ipynb`](Consumer_Financial_Complaints.ipynb)
-
-| Step | Description |
-|---|---|
-| **1. Data loading** | Loaded the complaints CSV and checked its shape |
-| **2. Raw vs clean copies** | Kept an untouched `raw_data` backup and worked on `clean_data` |
-| **3. Structure inspection** | Reviewed columns, data types, dimensions and descriptive statistics |
-| **4. Duplicate check** | Checked duplicate rows and duplicate complaint IDs |
-| **5. Missing value analysis** | Computed missing counts and percentages per column, with a bar chart |
-| **6. Column standardization** | Lowercased names and replaced spaces, hyphens and special characters |
-| **7. Date and numeric conversion** | Converted `date_received`, `date_sent_to_company` to datetime and `zip_code` to numeric |
-| **8. Text cleaning** | Stripped whitespace from categorical and text columns; standardized `state` to uppercase |
-| **9. Feature creation** | Created `response_days` (date sent to company minus date received) and checked for negative values |
-| **10. Missing value handling** | Filled `company_public_response`, `tags`, `state`, `zip_code` and `sub_issue` with explicit placeholders |
-| **11. Summary statistics** | Counted unique companies, products, issues, sub-issues, states and channels |
-| **12. Response time analysis** | Compared mean and median response time across the top products |
-| **13. Final verification** | Compared raw vs clean data and confirmed duplicates and missing values |
-| **14. Export** | Saved the cleaned dataset to CSV for the next phase |
+- Python
+- Jupyter Notebook
+- NumPy
+- Pandas
+- Matplotlib
+- Seaborn
 
 ---
 
-## 🛠 Tech Stack
+## 🔄 Project Workflow
 
-| Purpose | Tools |
+**Industry Selection → Problem Identification → Dataset Collection → Data Cleaning → Data Transformation → Data Analysis → Data Visualization → Insights → Recommendations**
+
+| Stage | Work done in this project |
 |---|---|
-| Language | Python 3.10+ |
-| Data analysis | pandas, NumPy |
-| Visualization | Matplotlib |
-| Environment | Jupyter Notebook |
-
-*Planned for later phases:* sentence-transformers, BERTopic, scikit-learn, LightGBM, SHAP, Streamlit.
+| **Industry Selection** | US consumer credit cards (retail banking and consumer lending) |
+| **Problem Identification** | Broad issue labels do not explain root causes or outcome consistency |
+| **Dataset Collection** | CFPB Consumer Complaint Database CSV |
+| **Data Cleaning** | Duplicate and missing value checks, column name standardization, text and state cleaning, complaint ID validation, handling of missing values |
+| **Data Transformation** | Date and numeric conversion, creation of `response_days` (date sent to company minus date received), negative value check |
+| **Data Analysis** | Complaint counts by company, issue, sub-issue, product and state; response time comparison across products |
+| **Data Visualization** | Charts listed in the next section |
+| **Insights** | See [Key Insights](#-key-insights) |
+| **Recommendations** | See [Recommendations](#-recommendations) |
 
 ---
 
-## 📁 Project Structure
+## 📊 Data Analysis & Visualization
 
-```
-Consumer_Financial_Complaints/
+The following analysis and visualizations were performed in the notebook:
 
+- **Missing Value Analysis** (missing count and percentage per column)
+- **Top Companies by Complaint Volume**
+- **Top Complaint Issues**
+- **Top Complaint Sub-Issues**
+- **Top Financial Products by Complaint Volume**
+- **Top States by Complaint Volume**
+- **Response Time Analysis** (mean and median `response_days` across the top products)
+
+---
+
+## 🔍 Key Insights
+
+*Add the insights from your notebook output here, using only real numbers. Suggested format:*
+
+- Dataset size after cleaning: `___` rows and `___` columns
+- Columns with the most missing values: `___`
+- Company with the highest complaint volume: `___` (`___` complaints)
+- Most frequent issue: `___`
+- Most frequent sub-issue: `___`
+- Product with the highest complaint volume: `___`
+- State with the highest complaint volume: `___`
+- Product with the longest average response time: `___` (`___` days)
+
+---
+
+## ✅ Recommendations
+
+*Write 3–5 short recommendations based only on the insights above. Suggested format:*
+
+1. Based on `[insight]`, issuers should `[action]`.
+2. Based on `[insight]`, regulators or analysts should `[action]`.
+3. Based on `[insight]`, the next analysis step should be `[action]`.
+
+---
+
+## Visualization Screenshots
+
+> Replace each filename below with the actual screenshot name you upload to the `Visualizations/` folder.
+
+### Missing Value Analysis
+
+![Missing Value Analysis](Visualizations/missing_value_analysis.png)
+
+### Top Companies by Complaint Volume
+
+![Top Companies by Complaint Volume](Visualizations/top_companies.png)
+
+### Top Complaint Issues
+
+![Top Complaint Issues](Visualizations/top_issues.png)
+
+### Top Complaint Sub-Issues
+
+![Top Complaint Sub-Issues](Visualizations/top_sub_issues.png)
+
+### Top Financial Products by Complaint Volume
+
+![Top Financial Products by Complaint Volume](Visualizations/top_products.png)
+
+### Top States by Complaint Volume
+
+![Top States by Complaint Volume](Visualizations/top_states.png)
+
+---
+
+## 📁 Project Folder Structure
+
+```text
+FinGrievance-Intelligence/
 │
 ├── README.md
 │
 ├── Dataset/
-│   ├── raw_dataset.csv
-│   └── cleaned_dataset.csv
+│   ├── complaints.csv                              # Raw CFPB dataset (replace with actual file name)
+│   └── cleaned_complaints.csv                      # Cleaned dataset (replace with actual file name)
 │
 ├── Notebook/
-│   └── Data_Analysis_EDA.ipynb
+│   └── Consumer_Financial_Complaints.ipynb
 │
-├── Python/
-│   ├── data_loading.py
-│   ├── data_cleaning.py
-│   ├── exploratory_analysis.py
-│   └── data_visualization.py
-│
-├── Visualizations/
-│   ├── distribution_analysis.png
-│   ├── trend_analysis.png
-│   ├── category_analysis.png
-│   └── correlation_analysis.png
-│
-└── Documentation/
-    └── Project_Report.pdf
+└── Visualizations/
+    ├── missing_value_analysis.png
+    ├── top_companies.png
+    ├── top_issues.png
+    ├── top_sub_issues.png
+    ├── top_products.png
+    └── top_states.png
 ```
 
----
-
-## ⚙ Installation & Usage
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/Siva-6030/FinGrievance-Intelligence.git
-cd FinGrievance-Intelligence
-
-# 2. Create and activate a virtual environment
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-# 3. Install dependencies
-pip install pandas numpy matplotlib jupyter
-
-# 4. Download the CFPB CSV, then update the file path in the notebook's load cell
-
-# 5. Run the notebook
-jupyter notebook Consumer_Financial_Complaints.ipynb
-```
+> If the raw CSV is too large for GitHub (over 100 MB), do not upload it. Keep only the download link in the Dataset section.
 
 ---
 
-## 🗺 Roadmap
+## 🚀 Future Scope
 
-| Phase | Description | Status |
-|---|---|---|
-| 1 | Data loading, cleaning, quality checks, EDA | 🔄 In progress |
-| 2 | Filter to credit card complaints with narratives; text preprocessing | ⏳ Planned |
-| 3 | Embedding-based topic modeling and trend tracking | ⏳ Planned |
-| 4 | Relief outcome prediction (time-based split) | ⏳ Planned |
-| 5 | Relief Gap Score by company and root cause | ⏳ Planned |
-| 6 | SHAP explainability and dashboard | ⏳ Planned |
-
----
-
-## 📊 Key Findings
-
-*To be added after the EDA is finalized (dataset size, top issues and companies, missing-value patterns, response-time trends).*
+- Filter to credit card complaints with narratives and preprocess text
+- Embedding-based topic modeling and trend tracking
+- Resolution outcome (relief) prediction with a time-based split
+- Company-level Relief Gap Score
+- SHAP explainability and dashboard
 
 ---
 
 ## 👤 Author
 
-**Sivasuriyan V**
- Integrated M.Tech (Software Engineering), VIT Vellore
+| | |
+|---|---|
+| **Name** | Sivasuriyan Velmurugan |
+| **Student ID** | AF05312120 |
+| **Organization** | Anudip Foundation |
+| **Course** | AIML |
+| **Batch Code** | ANPD7444 |
 
-- 🔗 LinkedIn: [linkedin.com/in/sivasuriyan-v](https://www.linkedin.com/in/sivasuriyan-v/)
-- 💻 GitHub: [github.com/Siva-6030](https://github.com/Siva-6030/)
-- 📧 Email: sivasuriyan662004@gmail.com
-
+---
 
 ⭐ If you find this project useful, consider starring the repository.
