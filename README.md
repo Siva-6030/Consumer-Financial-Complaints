@@ -180,32 +180,55 @@ The following analysis and visualizations were performed in the notebook:
 
 ## Visualization Screenshots
 
-> Replace each filename below with the actual screenshot name you upload to the `Visualizations/` folder.
+> Click a visualization name to view the image.
 
-### Missing Value Analysis
+<details>
+<summary><b>📉 Missing Value Analysis</b></summary>
+<br>
 
-![Missing Value Analysis](Visualizations/missing_value_analysis.png)
+<img src="https://github.com/Siva-6030/Consumer-Financial-Complaints/blob/main/Visualizations/Missing%20Value%20Analysis.png?raw=true" alt="Missing Value Analysis" width="800">
 
-### Top Companies by Complaint Volume
+</details>
 
-![Top Companies by Complaint Volume](Visualizations/top_companies.png)
+<details>
+<summary><b>🏢 Top Companies by Complaint Volume</b></summary>
+<br>
 
-### Top Complaint Issues
+<img src="https://github.com/Siva-6030/Consumer-Financial-Complaints/blob/main/Visualizations/Top%20Companies%20by%20Complaint%20Volume.png?raw=true" alt="Top Companies by Complaint Volume" width="800">
 
-![Top Complaint Issues](Visualizations/top_issues.png)
+</details>
 
-### Top Complaint Sub-Issues
+<details>
+<summary><b>⚠️ Top Complaint Issues</b></summary>
+<br>
 
-![Top Complaint Sub-Issues](Visualizations/top_sub_issues.png)
+<img src="https://github.com/Siva-6030/Consumer-Financial-Complaints/blob/main/Visualizations/Top%20Complaint%20Issues.png?raw=true" alt="Top Complaint Issues" width="800">
 
-### Top Financial Products by Complaint Volume
+</details>
 
-![Top Financial Products by Complaint Volume](Visualizations/top_products.png)
+<details>
+<summary><b>🔎 Top Complaint Sub-Issues</b></summary>
+<br>
 
-### Top States by Complaint Volume
+<img src="https://github.com/Siva-6030/Consumer-Financial-Complaints/blob/main/Visualizations/Top%20Complaint%20Sub-Issues.png?raw=true" alt="Top Complaint Sub-Issues" width="800">
 
-![Top States by Complaint Volume](Visualizations/top_states.png)
+</details>
 
+<details>
+<summary><b>💳 Top Financial Products by Complaint Volume</b></summary>
+<br>
+
+<img src="https://github.com/Siva-6030/Consumer-Financial-Complaints/blob/main/Visualizations/Top%20Financial%20Products%20by%20Complaint%20Volume.png?raw=true" alt="Top Financial Products by Complaint Volume" width="800">
+
+</details>
+
+<details>
+<summary><b>🗺️ Top States by Complaint Volume</b></summary>
+<br>
+
+<img src="https://github.com/Siva-6030/Consumer-Financial-Complaints/blob/main/Visualizations/Top%20States%20by%20Complaint%20Volume.png?raw=true" alt="Top States by Complaint Volume" width="800">
+
+</details>
 ---
 
 ## 📁 Project Folder Structure
