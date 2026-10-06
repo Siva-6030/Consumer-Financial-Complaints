@@ -101,13 +101,27 @@ An end-to-end NLP system on the credit card complaints in the CFPB database that
 
 The following analysis and visualizations were performed in the notebook:
 
-- **Missing Value Analysis** (missing count and percentage per column)
-- **Top Companies by Complaint Volume**
-- **Top Complaint Issues**
-- **Top Complaint Sub-Issues**
-- **Top Financial Products by Complaint Volume**
-- **Top States by Complaint Volume**
-- **Response Time Analysis** (mean and median `response_days` across the top products)
+![Missing Value Analysis](Visualizations/Missing%20Value%20Analysis.png)
+
+### Top Companies by Complaint Volume
+
+![Top Companies by Complaint Volume](Visualizations/Top%20Companies%20by%20Complaint%20Volume.png)
+
+### Top Complaint Issues
+
+![Top Complaint Issues](Visualizations/Top%20Complaint%20Issues.png)
+
+### Top Complaint Sub-Issues
+
+![Top Complaint Sub-Issues](Visualizations/Top%20Complaint%20Sub-Issues.png)
+
+### Top Financial Products by Complaint Volume
+
+![Top Financial Products by Complaint Volume](Visualizations/Top%20Financial%20Products%20by%20Complaint%20Volume.png)
+
+### Top States by Complaint Volume
+
+![Top States by Complaint Volume](Visualizations/Top%20States%20by%20Complaint%20Volume.png)
 
 ---
 
